@@ -11,11 +11,7 @@ import java.util.Stack;
  */
 public class ArbolExpresion {
     
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> main
+
     Nodo raiz;
     Map<Character, Double> variables;
 
