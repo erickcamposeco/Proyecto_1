@@ -204,6 +204,62 @@ public class ArbolExpresion {
         return caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^';
     }
 
-    
-    
-}
+    // Recorridos del arbol
+    public void recorridoPreOrden() { recorridoPreOrden(raiz); }
+    public void recorridoInOrden() { recorridoInOrden(raiz); }
+    public void recorridoPosOrden() { recorridoPosOrden(raiz); }
+
+    private void recorridoPreOrden(Nodo nodo) {
+        if (nodo != null) {
+            System.out.print(nodo.dato + " ");
+            recorridoPreOrden(nodo.izquierdo);
+            recorridoPreOrden(nodo.derecho);
+        }
+    }
+
+    private void recorridoInOrden(Nodo nodo) {
+        if (nodo != null) {
+            recorridoInOrden(nodo.izquierdo);
+            System.out.print(nodo.dato + " ");
+            recorridoInOrden(nodo.derecho);
+        }
+    }
+
+    private void recorridoPosOrden(Nodo nodo) {
+        if (nodo != null) {
+            recorridoPosOrden(nodo.izquierdo);
+            recorridoPosOrden(nodo.derecho);
+            System.out.print(nodo.dato + " ");
+        }
+    }
+
+    // Imprimir árbol grafico
+    public void imprimirArbolGrafico() {
+        imprimirArbolGrafico(raiz, 0);
+    }
+
+    private void imprimirArbolGrafico(Nodo nodo, int nivel) {
+        if (nodo != null) {
+            imprimirArbolGrafico(nodo.derecho, nivel + 1);
+            System.out.println("   ".repeat(nivel) + nodo.dato);
+            imprimirArbolGrafico(nodo.izquierdo, nivel + 1);
+        }
+    }
+
+    // Precedencia de operadores
+    private int precedencia(char operador) {
+        return switch (operador) {
+            case '+', '-' -> 1;
+            case '*', '/' -> 2;
+            case '^' -> 3;
+            default -> -1;
+        };
+    }
+
+    // Verificar si un caracter es un operador
+    private boolean esOperador(char caracter) {
+        return caracter == '+' || caracter == '-' || caracter == '*' || caracter == '/' || caracter == '^';
+    }
+
+    }
+
