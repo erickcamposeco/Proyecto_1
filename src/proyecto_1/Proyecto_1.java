@@ -108,3 +108,53 @@ public static void main(String[] args) {
         return parentesis == 0;
     }
 }
+# Documentación del Proyecto: Árbol de Expresiones Matemáticas
+
+## Descripción General
+Este programa en Java permite construir y manipular un árbol de expresión binario a partir de una expresión matemática ingresada por el usuario. Soporta operadores básicos (`+`, `-`, `*`, `/`, `^`), variables, números decimales y manejo de paréntesis. Incluye funcionalidades como evaluación de expresiones, recorridos del árbol y modificación de variables.
+
+---
+
+## Estructura del Código
+
+### Clases Principales
+1. **`ArbolExpresion`**  
+   - Contiene la lógica para construir el árbol, evaluar expresiones y realizar recorridos.
+   - **Métodos clave**:
+     - `construirArbol(String expresion)`: Convierte la expresión a postfija y construye el árbol.
+     - `evaluarExpresion()`: Calcula el resultado de la expresión.
+     - `recorridoPreOrden()`, `recorridoInOrden()`, `recorridoPosOrden()`: Recorridos del árbol.
+     - `imprimirArbolGrafico()`: Muestra el árbol en formato visual.
+
+2. **`Nodo` (Clase Interna)**  
+   - Representa un nodo del árbol con datos y referencias a hijos izquierdo/derecho.
+
+3. **`PROYECTO_1` (Clase Principal)**  
+   - Maneja la interacción con el usuario mediante un menú interactivo.
+
+---
+
+## Funcionalidades
+
+### 1. Validación de Expresión
+- **Reglas**:  
+  - Solo permite letras, dígitos, operadores (`+`, `-`, `*`, `/`, `^`) y paréntesis.
+  - Verifica balance de paréntesis.
+- **Ejemplo válido**: `a*(b+3.5)-c^2`  
+- **Ejemplo inválido**: `a+*b` (operadores consecutivos).
+
+### 2. Construcción del Árbol
+- **Pasos**:
+  1. Convierte la expresión infija a postfija (ej: `a+b*c` → `abc*+`).
+  2. Construye el árbol usando una pila, manejando operadores unarios (ej: `-5`).
+
+### 3. Menú Interactivo
+```plaintext
+1. Imprimir árbol de expresión (InOrden)
+2. Imprimir árbol gráfico
+3. Recorrido PreOrden
+4. Recorrido InOrden
+5. Recorrido PosOrden
+6. Modificar valores de variables
+7. Evaluar expresión
+0. Salir
