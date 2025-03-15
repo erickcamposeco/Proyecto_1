@@ -124,6 +124,29 @@ public class ArbolExpresion {
         return evaluarExpresion(raiz);
     }
 
+ private double evaluarExpresion(Nodo nodo) {
+        if (nodo == null) return 0.0;
+
+        if (Character.isLetter(nodo.dato.charAt(0))) {
+            return variables.get(nodo.dato.charAt(0));
+        }
+
+        if (nodo.dato.equals("-") && nodo.izquierdo == null) {
+            return -evaluarExpresion(nodo.derecho);
+        }
+
+        double izquierdo = evaluarExpresion(nodo.izquierdo);
+        double derecho = evaluarExpresion(nodo.derecho);
+
+        switch (nodo.dato) {
+            case "+": return izquierdo + derecho;
+            case "-": return izquierdo - derecho;
+            case "*": return izquierdo * derecho;
+            case "/": return izquierdo / derecho;
+            case "^": return Math.pow(izquierdo, derecho);
+            default: return Double.parseDouble(nodo.dato);
+        }
+    }
 
 
     
