@@ -29,7 +29,11 @@ public class ArbolExpresion {
         variables = new HashMap<>();
     }
     
-    // Construir el árbol a partir de una expresión
+
+    // Construir el arbol a partir de una expresion
+
+     // Construir el arbol a partir de una expresion
+
     public void construirArbol(String expresion) {
         String postfija = convertirPostfija(expresion);
         Stack<Nodo> pila = new Stack<>();
@@ -68,7 +72,7 @@ public class ArbolExpresion {
         raiz = pila.pop();
     }
     
-    // Convertir expresión a notación postfija
+    // Convertir expresion a notacion postfija
     private String convertirPostfija(String expresion) {
         StringBuilder resultado = new StringBuilder();
         Stack<Character> pila = new Stack<>();
